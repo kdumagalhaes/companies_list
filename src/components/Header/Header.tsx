@@ -1,9 +1,5 @@
 import { Container } from './styles'
-
-export enum Modes {
-  RED = 'red',
-  GREEN = 'green',
-}
+import { Modes } from '../../styles/themes/default'
 
 interface HeaderProps {
   mode: Modes

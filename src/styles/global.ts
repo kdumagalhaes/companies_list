@@ -16,4 +16,8 @@ body {
 body, input, textarea, button {
     font: 400 1rem 'Inter', sans-serif;
 }
+
+ul {
+    list-style: none;
+}
 `

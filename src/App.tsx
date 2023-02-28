@@ -1,13 +1,12 @@
 import { ThemeProvider } from 'styled-components'
-import { defaultTheme } from './styles/themes/default'
+import { defaultTheme, Modes } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
-import { Header, Modes } from './components/Header/Header'
+import { List } from './components/List/List'
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Header mode={Modes.RED} type="company" title="Local Public Office" />
-      <Header mode={Modes.GREEN} type="" title="Local Office" />
+      <List mode={Modes.GREEN} title1="Company name" title2="Vatin" />
       <GlobalStyle />
     </ThemeProvider>
   )
