@@ -6,6 +6,8 @@ interface Props {
 }
 
 export const Container = styled.header<Props>`
+  margin-bottom: 3rem;
+
   .type {
     text-transform: uppercase;
     font-size: 0.9rem;

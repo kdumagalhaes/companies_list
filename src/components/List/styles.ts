@@ -9,12 +9,10 @@ export const Container = styled.div<Props>`
     display: flex;
     font-weight: 400;
     text-transform: uppercase;
-    margin-bottom: 1rem;
-    padding-left: 1rem;
+    padding: 1rem;
 
-    .title-1,
-    .title-2 {
-      width: 180px;
+    .title-1 {
+      width: 300px;
     }
   }
 
@@ -26,9 +24,8 @@ export const Container = styled.div<Props>`
     border-radius: 7px;
     outline: 1px solid ${({ theme }) => theme['light-gray']};
 
-    .data-row-1,
-    .data-row-2 {
-      width: 180px;
+    .data-row-1 {
+      width: 300px;
     }
 
     .data-link {
