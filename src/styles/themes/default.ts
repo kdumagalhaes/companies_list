@@ -1,3 +1,8 @@
+export enum Modes {
+  RED = 'red',
+  GREEN = 'green',
+}
+
 export const defaultTheme = {
   red: '#ED1C24',
   gray: '#6F6F6F',
