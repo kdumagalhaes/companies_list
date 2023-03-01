@@ -6,5 +6,9 @@ export function BackButton() {
   const goBack = () => {
     navigate(-1)
   }
-  return <Button onClick={goBack}>Back</Button>
+  return (
+    <Button data-testid="back-button-test" onClick={goBack}>
+      Back
+    </Button>
+  )
 }
