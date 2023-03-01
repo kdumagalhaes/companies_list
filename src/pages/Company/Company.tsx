@@ -17,7 +17,7 @@ export function Company() {
   const companyName = getCompanyNameByPathName(pathname)
 
   return (
-    <Container>
+    <Container data-testid="company-div-test">
       <BackButton />
       <Header mode={Modes.GREEN} type="Company" title={companyName} />
       {filteredPhoneNumbers?.length ? (

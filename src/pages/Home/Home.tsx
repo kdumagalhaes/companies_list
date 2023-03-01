@@ -9,7 +9,7 @@ export function Home() {
   const { companies } = useCompanies()
 
   return (
-    <Container>
+    <Container data-testid="home-div-test">
       <Header mode={Modes.RED} title="Companies" />
       <List mode={Modes.RED} title1="Company name" title2="Vatin">
         {companies?.map((company) => {
