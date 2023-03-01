@@ -29,6 +29,7 @@ export function Company() {
                   <NavLink
                     to={{ pathname: `/number/${number.id}` }}
                     className="data-link"
+                    data-testid="data-link-test"
                   >
                     {formatPtPhoneNumber(number.id)}
                   </NavLink>
