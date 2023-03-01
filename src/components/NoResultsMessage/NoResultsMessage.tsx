@@ -5,5 +5,5 @@ interface NoResultsMessageProps {
 }
 
 export function NoResultsMessage({ message }: NoResultsMessageProps) {
-  return <Container>{message}</Container>
+  return <Container data-testid="message-test">{message}</Container>
 }

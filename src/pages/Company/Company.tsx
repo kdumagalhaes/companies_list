@@ -17,7 +17,7 @@ export function Company() {
   const companyName = getCompanyNameByPathName(pathname)
 
   return (
-    <Container>
+    <Container data-testid="company-div-test">
       <BackButton />
       <Header mode={Modes.GREEN} type="Company" title={companyName} />
       {filteredPhoneNumbers?.length ? (
@@ -29,6 +29,7 @@ export function Company() {
                   <NavLink
                     to={{ pathname: `/number/${number.id}` }}
                     className="data-link"
+                    data-testid="data-link-test"
                   >
                     {formatPtPhoneNumber(number.id)}
                   </NavLink>

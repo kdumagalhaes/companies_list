@@ -15,7 +15,7 @@ export const Container = styled.header<Props>`
 
   .title {
     color: ${(props) =>
-      (props.mode === 'red' && '#ED1C24') ||
-      (props.mode === 'green' && '#1F96A2')};
+      (props.mode === 'red' && 'rgb(237, 28, 36)') ||
+      (props.mode === 'green' && 'rgb(31, 150, 162)')};
   }
 `

@@ -10,10 +10,14 @@ interface ListProps {
 
 export function List({ mode, title1, title2, children }: ListProps) {
   return (
-    <Container mode={mode}>
+    <Container data-testid="div-test" mode={mode}>
       <ul className="title">
-        <li className="title-1">{title1}</li>
-        <li className="title-2">{title2}</li>
+        <li data-testid="title1-test" className="title-1">
+          {title1}
+        </li>
+        <li data-testid="title2-test" className="title-2">
+          {title2}
+        </li>
       </ul>
       {children}
     </Container>

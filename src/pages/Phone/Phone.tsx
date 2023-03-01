@@ -16,7 +16,7 @@ export function Phone() {
   const formatedPhoneNumber = formatPtPhoneNumber(phoneNumber)
 
   return (
-    <Container>
+    <Container data-testid="phone-div-test">
       <BackButton />
       <Header mode={Modes.GREEN} type={phoneType} title={formatedPhoneNumber} />
     </Container>
