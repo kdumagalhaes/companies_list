@@ -6,6 +6,7 @@ import {
   useEffect,
   useMemo,
 } from 'react'
+import { getIdByPathName } from '../utils/getIdByPathName'
 
 interface CompaniesProviderProps {
   children: ReactNode
@@ -62,7 +63,7 @@ export const CompaniesProvider = ({ children }: CompaniesProviderProps) => {
 
   const getPhoneNumbersByPathName = useMemo(() => {
     return (pathName: string) => {
-      const companyId = pathName.slice(9)
+      const companyId = getIdByPathName(pathName, 9)
       return phoneNumbers?.filter(
         (phoneNumber) => phoneNumber.company_id === Number(companyId),
       )
@@ -71,7 +72,7 @@ export const CompaniesProvider = ({ children }: CompaniesProviderProps) => {
 
   const getCompanyNameByPathName = useMemo(() => {
     return (pathName: string) => {
-      const companyId = pathName.slice(9)
+      const companyId = getIdByPathName(pathName, 9)
       const company = companies?.filter(
         (company) => company.id === Number(companyId),
       )
@@ -81,7 +82,7 @@ export const CompaniesProvider = ({ children }: CompaniesProviderProps) => {
 
   const getPhoneTypeByPathName = useMemo(() => {
     return (pathName: string) => {
-      const phoneNumberId = pathName.slice(8)
+      const phoneNumberId = getIdByPathName(pathName, 8)
       const phoneNumber = phoneNumbers?.filter(
         (item) => item.id === phoneNumberId,
       )
