@@ -5,6 +5,7 @@ import { Container } from './styles'
 import { useLocation } from 'react-router'
 import { useCompanies } from '../../context/CompaniesContext'
 import { NavLink } from 'react-router-dom'
+import { BackButton } from '../../components/BackButton/BackButton'
 
 export function Company() {
   const { pathname } = useLocation()
@@ -15,6 +16,7 @@ export function Company() {
 
   return (
     <Container>
+      <BackButton />
       <Header mode={Modes.GREEN} type="Company" title={companyName} />
       <List mode={Modes.GREEN} title1="Number" title2="Type">
         {filteredPhoneNumbers?.map((number) => {
