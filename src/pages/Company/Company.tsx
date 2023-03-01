@@ -4,6 +4,7 @@ import { Modes } from '../../styles/themes/default'
 import { Container } from './styles'
 import { useLocation } from 'react-router'
 import { useCompanies } from '../../context/CompaniesContext'
+import { NavLink } from 'react-router-dom'
 
 export function Company() {
   const { pathname } = useLocation()
@@ -20,9 +21,12 @@ export function Company() {
           return (
             <ul key={number.id} className="data-row">
               <li className="data-row-1">
-                <a href="#" className="data-link">
+                <NavLink
+                  to={{ pathname: `/number/${number.id}` }}
+                  className="data-link"
+                >
                   {number.id}
-                </a>
+                </NavLink>
               </li>
               <li className="data-row-2">{number.type}</li>
             </ul>
