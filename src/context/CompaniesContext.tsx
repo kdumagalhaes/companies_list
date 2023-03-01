@@ -26,6 +26,7 @@ interface CompaniesContextModel {
   companies: CompaniesApi[] | undefined
   getPhoneNumbersByPathName: (pathName: string) => PhoneNumbersApi[] | undefined
   getCompanyNameByPathName: (pathName: string) => string
+  getPhoneTypeByPathName: (pathName: string) => string
 }
 
 export const CompaniesContext = createContext({} as CompaniesContextModel)
@@ -72,6 +73,14 @@ export const CompaniesProvider = ({ children }: CompaniesProviderProps) => {
     return company ? company[0].name : ''
   }
 
+  const getPhoneTypeByPathName = (pathName: string) => {
+    const phoneNumberId = pathName.slice(8)
+    const phoneNumber = phoneNumbers?.filter(
+      (item) => item.id === phoneNumberId,
+    )
+    return phoneNumber ? phoneNumber[0].type : ''
+  }
+
   useEffect(() => {
     fetchCompanies()
     fetchNumbers()
@@ -81,6 +90,7 @@ export const CompaniesProvider = ({ children }: CompaniesProviderProps) => {
     companies,
     getPhoneNumbersByPathName,
     getCompanyNameByPathName,
+    getPhoneTypeByPathName,
   }
 
   return (
