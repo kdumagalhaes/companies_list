@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   padding: 0.6rem 1.6rem;
   border: none;
   background-color: ${({ theme }) => theme.gray};
@@ -14,5 +17,10 @@ export const Button = styled.button`
   &:hover {
     box-shadow: none;
     opacity: 0.9;
+  }
+
+  .back-arrow {
+    width: 1.1rem;
+    height: 1.1rem;
   }
 `
