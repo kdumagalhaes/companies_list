@@ -20,4 +20,8 @@ body, input, textarea, button {
 ul {
     list-style: none;
 }
+
+button {
+    cursor: pointer;
+}
 `

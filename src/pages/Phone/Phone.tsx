@@ -3,6 +3,7 @@ import { Header } from '../../components/Header/Header'
 import { Modes } from '../../styles/themes/default'
 import { Container } from './styles'
 import { useCompanies } from '../../context/CompaniesContext'
+import { BackButton } from '../../components/BackButton/BackButton'
 
 export function Phone() {
   const { pathname } = useLocation()
@@ -16,6 +17,7 @@ export function Phone() {
 
   return (
     <Container>
+      <BackButton />
       <Header mode={Modes.GREEN} type={phoneType} title={formatedPhoneNumber} />
     </Container>
   )
