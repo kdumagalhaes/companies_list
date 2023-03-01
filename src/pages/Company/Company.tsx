@@ -6,6 +6,7 @@ import { useLocation } from 'react-router'
 import { useCompanies } from '../../context/CompaniesContext'
 import { NavLink } from 'react-router-dom'
 import { BackButton } from '../../components/BackButton/BackButton'
+import { NoResultsMessage } from '../../components/NoResultsMessage/NoResultsMessage'
 
 export function Company() {
   const { pathname } = useLocation()
@@ -18,23 +19,27 @@ export function Company() {
     <Container>
       <BackButton />
       <Header mode={Modes.GREEN} type="Company" title={companyName} />
-      <List mode={Modes.GREEN} title1="Number" title2="Type">
-        {filteredPhoneNumbers?.map((number) => {
-          return (
-            <ul key={number.id} className="data-row">
-              <li className="data-row-1">
-                <NavLink
-                  to={{ pathname: `/number/${number.id}` }}
-                  className="data-link"
-                >
-                  {number.id}
-                </NavLink>
-              </li>
-              <li className="data-row-2">{number.type}</li>
-            </ul>
-          )
-        })}
-      </List>
+      {filteredPhoneNumbers?.length ? (
+        <List mode={Modes.GREEN} title1="Number" title2="Type">
+          {filteredPhoneNumbers?.map((number) => {
+            return (
+              <ul key={number.id} className="data-row">
+                <li className="data-row-1">
+                  <NavLink
+                    to={{ pathname: `/number/${number.id}` }}
+                    className="data-link"
+                  >
+                    {number.id}
+                  </NavLink>
+                </li>
+                <li className="data-row-2">{number.type}</li>
+              </ul>
+            )
+          })}
+        </List>
+      ) : (
+        <NoResultsMessage message="⚠️ No results found." />
+      )}
     </Container>
   )
 }
