@@ -4,6 +4,7 @@ import {
   useContext,
   useState,
   useEffect,
+  useMemo,
 } from 'react'
 
 interface CompaniesProviderProps {
@@ -38,53 +39,55 @@ export const CompaniesProvider = ({ children }: CompaniesProviderProps) => {
   const COMPANIES_URL = 'http://localhost:3000/companies'
   const PHONE_NUMBERS_URL = 'http://localhost:3000/phone_numbers'
 
-  const fetchCompanies = async () => {
+  const fetchData = async () => {
     try {
-      const response = await fetch(COMPANIES_URL)
-      const data = await response.json()
-      setCompanies(data)
+      const [companiesResponse, phoneNumbersResponse] = await Promise.all([
+        fetch(COMPANIES_URL),
+        fetch(PHONE_NUMBERS_URL),
+      ])
+      const [companiesData, phoneNumbersData] = await Promise.all([
+        companiesResponse.json(),
+        phoneNumbersResponse.json(),
+      ])
+      setCompanies(companiesData)
+      setPhoneNumbers(phoneNumbersData)
     } catch (error) {
       console.warn(error)
     }
-  }
-
-  const fetchNumbers = async () => {
-    try {
-      const response = await fetch(PHONE_NUMBERS_URL)
-      const data = await response.json()
-      setPhoneNumbers(data)
-    } catch (error) {
-      console.warn(error)
-    }
-  }
-
-  const getPhoneNumbersByPathName = (pathName: string) => {
-    const companyId = pathName.slice(9)
-    return phoneNumbers?.filter(
-      (phoneNumber) => phoneNumber.company_id === Number(companyId),
-    )
-  }
-
-  const getCompanyNameByPathName = (pathName: string) => {
-    const companyId = pathName.slice(9)
-    const company = companies?.filter(
-      (company) => company.id === Number(companyId),
-    )
-    return company ? company[0].name : ''
-  }
-
-  const getPhoneTypeByPathName = (pathName: string) => {
-    const phoneNumberId = pathName.slice(8)
-    const phoneNumber = phoneNumbers?.filter(
-      (item) => item.id === phoneNumberId,
-    )
-    return phoneNumber ? phoneNumber[0].type : ''
   }
 
   useEffect(() => {
-    fetchCompanies()
-    fetchNumbers()
+    fetchData()
   }, [])
+
+  const getPhoneNumbersByPathName = useMemo(() => {
+    return (pathName: string) => {
+      const companyId = pathName.slice(9)
+      return phoneNumbers?.filter(
+        (phoneNumber) => phoneNumber.company_id === Number(companyId),
+      )
+    }
+  }, [phoneNumbers])
+
+  const getCompanyNameByPathName = useMemo(() => {
+    return (pathName: string) => {
+      const companyId = pathName.slice(9)
+      const company = companies?.filter(
+        (company) => company.id === Number(companyId),
+      )
+      return company ? company[0].name : ''
+    }
+  }, [companies])
+
+  const getPhoneTypeByPathName = useMemo(() => {
+    return (pathName: string) => {
+      const phoneNumberId = pathName.slice(8)
+      const phoneNumber = phoneNumbers?.filter(
+        (item) => item.id === phoneNumberId,
+      )
+      return phoneNumber ? phoneNumber[0].type : ''
+    }
+  }, [phoneNumbers])
 
   const value = {
     companies,
