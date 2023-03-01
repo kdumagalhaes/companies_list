@@ -7,6 +7,7 @@ import { useCompanies } from '../../context/CompaniesContext'
 import { NavLink } from 'react-router-dom'
 import { BackButton } from '../../components/BackButton/BackButton'
 import { NoResultsMessage } from '../../components/NoResultsMessage/NoResultsMessage'
+import { formatPtPhoneNumber } from '../../utils/formatPtPhoneNumber'
 
 export function Company() {
   const { pathname } = useLocation()
@@ -29,7 +30,7 @@ export function Company() {
                     to={{ pathname: `/number/${number.id}` }}
                     className="data-link"
                   >
-                    {number.id}
+                    {formatPtPhoneNumber(number.id)}
                   </NavLink>
                 </li>
                 <li className="data-row-2">{number.type}</li>
