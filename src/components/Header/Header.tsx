@@ -9,9 +9,17 @@ interface HeaderProps {
 
 export function Header({ mode, type, title }: HeaderProps) {
   return (
-    <Container mode={mode}>
-      {type ? <span className="type">{type}</span> : ''}
-      <h1 className="title">{title}</h1>
+    <Container data-testid="header-test" mode={mode}>
+      {type ? (
+        <span data-testid="span-test" className="type">
+          {type}
+        </span>
+      ) : (
+        ''
+      )}
+      <h1 data-testid="h1-test" className="title">
+        {title}
+      </h1>
     </Container>
   )
 }
