@@ -4,6 +4,7 @@ import { Modes } from '../../styles/themes/default'
 import { Container } from './styles'
 import { useCompanies } from '../../context/CompaniesContext'
 import { BackButton } from '../../components/BackButton/BackButton'
+import { formatPtPhoneNumber } from '../../utils/formatPtPhoneNumber'
 
 export function Phone() {
   const { pathname } = useLocation()
@@ -12,8 +13,7 @@ export function Phone() {
   const phoneType = getPhoneTypeByPathName(pathname)
 
   const phoneNumber = pathname.slice(8)
-  const formatedPhoneNumber =
-    phoneNumber.slice(0, 3) + ' ' + phoneNumber.slice(3)
+  const formatedPhoneNumber = formatPtPhoneNumber(phoneNumber)
 
   return (
     <Container>
