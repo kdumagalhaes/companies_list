@@ -34,9 +34,6 @@ npm run dev
 ```
 npm run test
 ```
-## Requirements:
-- Node's latest version installed on your machine.
-- https://nodejs.org/en/download/
 
 ## Technologies:
 
